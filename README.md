@@ -29,7 +29,7 @@ En la página `list-product-page`, se debe:
 - Utilizar el componente `bbva-web-card-product` para listar todos los productos almacenados en `localStorage`, proporcionando una representación visual de cada producto.
 
 
-## Ejercutar
+## Ejecutar
 
 Para instalar y ejecutar el proyecto, sigue estos pasos:
 
