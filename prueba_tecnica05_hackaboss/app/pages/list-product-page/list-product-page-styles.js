@@ -115,7 +115,7 @@ bbva-web-form-select {
   margin-bottom: 1rem;
 }
 
-bbbva-web-button-default {
+bbva-web-button-default {
   width: 100%;
   background-color: #532866;
   color: #abb8d8;
