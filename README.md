@@ -86,4 +86,4 @@ Aquí hay algunas capturas de pantalla que muestran el funcionamiento de la pág
 #### Uno de los aspectos a mejorar
 
 La barra de navegación se muestra con el texto demo-menu-container-web
-![Sidebar](/images/SiderBar.png)
+![Sidebar](/images/SiderBar.jepg)
