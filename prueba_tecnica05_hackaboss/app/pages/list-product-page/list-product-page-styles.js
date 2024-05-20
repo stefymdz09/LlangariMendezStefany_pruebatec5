@@ -115,18 +115,19 @@ bbva-web-form-select {
   margin-bottom: 1rem;
 }
 
-bbva-web-button-default {
-  --bbva-web-button-default-background: #9966c6;
-  --bbva-web-button-default-color: #fff;
-  --bbva-web-button-default-border-radius: 24px;
-  --bbva-web-button-default-padding: 0.5rem 1.5rem;
-  --bbva-web-button-default-font-size: 1rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: background-color 0.3s;
+bbbva-web-button-default {
+  width: 100%;
+  background-color: #532866;
+  color: #abb8d8;
+  font-size: var(--typographyTypeMedium, 1rem);
+  padding: 0.75rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 bbva-web-button-default:hover {
-  background-color: #42327d;
+  background-color: #85589b;
 }
 
 @media screen and (min-width: 37.5rem) {

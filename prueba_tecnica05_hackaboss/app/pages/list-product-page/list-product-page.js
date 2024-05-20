@@ -112,7 +112,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
   //ordenar los productos
   handleSortChange(event) {
     const sortBy = event.target.value;
-  
+
     switch (sortBy) {
       case 'priceAsc':
         this.products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
@@ -131,7 +131,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     }
     this.requestUpdate();
   }
-  
+
   //Eliminar producto seleccionado
   deleteProduct(productId) {
     this.products = this.products.filter(product => product.id !== productId);
