@@ -65,7 +65,7 @@ Este componente define la página de listado de productos. Utiliza los siguiente
 
 - **`loadProducts()`:** Este método se utiliza para cargar los productos almacenados en `localStorage` cuando se inicializa la página. Si no hay productos almacenados, devuelve un array vacío.
 - **`connectedCallback()`:** Este método es llamado cuando el elemento se conecta al DOM. Se suscribe al evento `detail_open` para detectar cuándo se ha abierto un detalle de producto.
-- **`onPageEnter()`:** Se suscribe al evento `AddProduct` para recibir notificaciones cuando se añade un nuevo producto. Luego actualiza la lista de productos, guarda los productos en `localStorage` y solicita una actualización de la página.
+- **`onPageEnter()`:** Se suscribe al evento `ch-add-product` para recibir notificaciones cuando se añade un nuevo producto. Luego actualiza la lista de productos, guarda los productos en `localStorage` y solicita una actualización de la página.
 - **`saveProducts()`:** Guarda la lista de productos en `localStorage` después de que se haya actualizado.
 - **`handleSortChange(event)`:** Maneja el cambio en el menú desplegable de selección de orden. Dependiendo de la opción seleccionada, ordena los productos por precio ascendente, precio descendente, nombre ascendente o nombre descendente.
 - **`deleteProduct(productId)`:** Elimina un producto de la lista y actualiza el localStorage y la interfaz de usuario..
