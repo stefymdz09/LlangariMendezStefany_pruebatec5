@@ -1,0 +1,16 @@
+{
+  "en": {
+     "create-product-page.form-heading": "Add product",
+     "create-product-page.form-button": "Add",
+      "list-product-page.form-heading1": "List of Products",
+      "list-product-page.form-heading2": "Sort Products",
+      "list-product-page.form-buttonRemove":"Remove"
+  },
+  "es": {
+    "create-product-page.form-heading": "Crear Producto",
+    "create-product-page.form-button": "Añadir",
+      "list-product-page.form-heading1": "Lista de Productos",
+      "list-product-page.form-heading2": "Ordenar Productos",
+      "list-product-page.form-buttonRemove":"Eliminar"
+  }
+}

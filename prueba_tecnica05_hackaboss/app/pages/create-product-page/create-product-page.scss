@@ -1,0 +1,93 @@
+@use "node_modules/@bbva-web-components/bbva-foundations-sass/main" as *;
+
+:host {
+  --bbva-web-progress-bar-bg-color: #{token('foundations.colors.secondary300')};
+
+  display: block;
+  box-sizing: border-box;
+  font-size: token('foundations.typography.typeSmall');
+  line-height: token('foundations.lineHeight.typeSmall');
+  background-color: #{token('foundations.colors.primary100')};
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+:host([hidden]),
+[hidden] {
+  display: none !important;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.hidden {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1px;
+  text-decoration: none;
+}
+
+form {
+  width: 40%;
+  margin: 3rem auto 1rem;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+  & > * {
+    margin-bottom: 1rem;
+  }
+
+  bbva-web-form-fieldset {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  bbva-web-form-text,
+  bbva-web-form-amount,
+  bbva-web-form-textarea {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  bbva-web-button-default {
+    width: 100%;
+    
+    background-color:#030e2b;
+    color: #abb8d8;
+    font-size: token('foundations.typography.typeMedium');
+    padding: 0.75rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #{token('foundations.colors.primary500')};
+    }
+  }
+
+}
+
+
+bbva-web-module-footer-language-list-item[selected] {
+  font-weight: token('foundations.fontFacePrimary.medium.fontWeight');
+}
+
+h1 {
+  text-align: center;
+  font-size: token('foundations.typography.type3XLarge');
+  margin-bottom: 2rem;
+}
