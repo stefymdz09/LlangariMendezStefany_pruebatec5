@@ -68,7 +68,7 @@ Este componente define la página de listado de productos. Utiliza los siguiente
 - **`onPageEnter()`:** Se suscribe al evento `ch-add-product` para recibir notificaciones cuando se añade un nuevo producto. Luego actualiza la lista de productos, guarda los productos en `localStorage` y solicita una actualización de la página.
 - **`saveProducts()`:** Guarda la lista de productos en `localStorage` después de que se haya actualizado.
 - **`handleSortChange(event)`:** Maneja el cambio en el menú desplegable de selección de orden. Dependiendo de la opción seleccionada, ordena los productos por precio ascendente, precio descendente, nombre ascendente o nombre descendente.
-- **`deleteProduct(productId)`:** Elimina un producto de la lista y actualiza el localStorage y la interfaz de usuario..
+- **`deleteProduct(productId)`:** Elimina un producto de la lista y actualiza el localStorage.
 
 #### Componentes Utilizados
 
