@@ -116,7 +116,7 @@ bbva-web-form-select {
 }
 
 bbva-web-button-default {
-  --bbva-web-button-default-background: #9966c6;
+  background-color: #221130;
   --bbva-web-button-default-color: #fff;
   --bbva-web-button-default-border-radius: 24px;
   --bbva-web-button-default-padding: 0.5rem 1.5rem;
