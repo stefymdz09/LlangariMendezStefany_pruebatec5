@@ -54,7 +54,8 @@ Aquí hay algunas capturas de pantalla que muestran el funcionamiento de la pág
 
 ### list-product-page.js
 
-Este componente define la página de listado de productos. Utiliza los siguientes componentes de BBVA Web Components:
+#### Componentes Utilizados
+
 
 - `bbva-web-card-product`: Se utiliza para mostrar cada producto almacenado en localStorage.
 - `bbva-web-form-select`: Se utiliza para proporcionar un menú desplegable que permite al usuario ordenar los productos por precio o nombre.
@@ -69,12 +70,6 @@ Este componente define la página de listado de productos. Utiliza los siguiente
 - **`saveProducts()`:** Guarda la lista de productos en `localStorage` después de que se haya actualizado.
 - **`handleSortChange(event)`:** Maneja el cambio en el menú desplegable de selección de orden. Dependiendo de la opción seleccionada, ordena los productos por precio ascendente, precio descendente, nombre ascendente o nombre descendente.
 - **`deleteProduct(productId)`:** Elimina un producto de la lista y actualiza el localStorage.
-
-#### Componentes Utilizados
-
-- **`bbva-web-card-product`:** Componente que muestra visualmente la información de un producto.
-- **`bbva-web-form-select`:** Componente que proporciona un menú desplegable para seleccionar opciones de filtrado.
-- **`bbva-web-form-option`:** Opciones dentro del menú desplegable para seleccionar el criterio de ordenación de los productos.
 
 ## Vista de la pagina list-product
 
