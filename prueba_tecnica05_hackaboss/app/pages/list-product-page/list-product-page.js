@@ -33,9 +33,10 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
     return [ styles ];
   }
 
+  // Aquí inicializamos las propiedades, lo suyo sera inicializar a array vacio, si por lo que sea no tenemos Session Storage, la cosntrucción del componente dara error.
   constructor() {
     super();
-    this.products = this.loadProducts();
+    this.products = [];
     this.page = 'products';
     this.i18nKeys = {};
     this._i18nKeys = DEFAULT_I18N_KEYS;
@@ -49,6 +50,10 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
 
   connectedCallback() {
     super.connectedCallback();
+
+    // Movemos el coger el valor de Session connectedCallback
+    this.products = this.loadProducts();
+
     this.subscribe('detail_open', (ev) => {
       this._detailOpened = ev;
     });
@@ -62,6 +67,7 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
       //comprobar si el producto existe en la lista
       const existingProductIndex = this.products.findIndex(p => p.id === product.id);
 
+      //💪 Bien visto
       if (existingProductIndex === -1) {
         //agregarlo al array si no existe el producto
         this.products.push(product);
@@ -110,6 +116,8 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
   //ordenar los productos
+  // Tenemos que tener cuidado en utilizar this.requestUpdate() para que el componente detecte la reactividad en propiedades de tipo complejas como array o objetos
+  // tenemos que "sustituir el array por otro nuevo", en este caso con el sort es más complicado ya que cambia los valores del array, pero podríamos utilizar "filter"
   handleSortChange(event) {
     const sortBy = event.target.value;
 
@@ -133,10 +141,12 @@ class ListProductPage extends BbvaCoreIntlMixin(CellsPage) {
   }
 
   //Eliminar producto seleccionado
+  // Ejemplo de como no utilizar requestUpdate
   deleteProduct(productId) {
-    this.products = this.products.filter(product => product.id !== productId);
+    this.products = [
+      ...this.products.filter(product => product.id !== productId),
+    ];
     this.saveProducts();
-    this.requestUpdate();
   }
 
   getSelectFilter() {

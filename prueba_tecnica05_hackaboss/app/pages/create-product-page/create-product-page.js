@@ -41,6 +41,7 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
     return [ styles ];
   }
 
+  //💪  Inicializamos las propiedades
   constructor() {
     super();
     this.productName = '';
@@ -61,42 +62,6 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
     this.publish('navigation_info', MENU_ITEMS);
   }
 
-  //envio de formulario
-  handleSubmit(ev) {
-    ev.preventDefault();
-    const productNameInput = this.shadowRoot.querySelector('#productNameInput');
-    const productPriceInput = this.shadowRoot.querySelector('#productPriceInput');
-    const productDescriptionInput = this.shadowRoot.querySelector('#productDescriptionInput');
-    const productImageInput = this.shadowRoot.querySelector('#productImageInput');
-    const productId = randomID();
-
-    this.productName = productNameInput.value;
-    this.productPrice = parseFloat(productPriceInput.value);
-    this.productDescription = productDescriptionInput.value;
-    this.productImage = productImageInput.value;
-
-    //objeto de producto con sus datos
-
-    const product = {
-      id: productId,
-      name: this.productName,
-      price: this.productPrice,
-      description: this.productDescription,
-      image: this.productImage
-    };
-
-    //publicar un evento con el producto creado
-    console.log('Producto creado:', product);
-    this.publish('ch-add-product', { detail: { product } });
-
-    //almacenar el producto en el localStorage
-    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-    storedProducts.push(product);
-    localStorage.setItem('products', JSON.stringify(storedProducts));
-
-    this.navigate('list-product');
-  }
-
   firstUpdated(props) {
     super.firstUpdated && super.firstUpdated(props);
     window.IntlMsg.lang = localStorage.getItem('language') || 'en-US';
@@ -109,6 +74,50 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
     super.update && super.update(props);
   }
 
+  //envio de formulario
+  // al tener inputs dentro de un form podeos utilizar la API nativa de JS para rescatar todos los valores
+  // https://developer.mozilla.org/en-US/docs/Web/API/FormData/FormData
+  handleSubmit(ev) {
+    ev.preventDefault();
+
+    const form = ev.target.closest('form');
+    const formData = new FormData(form);
+    /*
+    const productNameInput = this.shadowRoot.querySelector('#productNameInput');
+    const productPriceInput = this.shadowRoot.querySelector('#productPriceInput');
+    const productDescriptionInput = this.shadowRoot.querySelector('#productDescriptionInput');
+    const productImageInput = this.shadowRoot.querySelector('#productImageInput');
+    */
+    const productId = randomID();
+
+    this.productName = formData.get('productNameInput');
+    this.productPrice = formData.get('productPriceInput');
+    this.productDescription = formData.get('productDescriptionInput');
+    this.productImage = formData.get('productImageInput');
+
+    //objeto de producto con sus datos
+    const product = {
+      id: productId,
+      name: this.productName,
+      price: this.productPrice,
+      description: this.productDescription,
+      image: this.productImage
+    };
+
+    //publicar un evento con el producto creado
+    //💪 canal con el nombre correcto
+    console.log('Producto creado:', product);
+    this.publish('ch-add-product', { detail: { product } });
+
+    //almacenar el producto en el localStorage
+    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+    storedProducts.push(product);
+    localStorage.setItem('products', JSON.stringify(storedProducts));
+
+    this.navigate('list-product');
+  }
+
+  //💪 muy bien tenemos el render limpio y separado en funciones
   render() {
     return html` 
       <demo-web-template page-title="Add Product" reset-detail-on-state-change>
@@ -120,15 +129,16 @@ class CreateProductPage extends BbvaCoreIntlMixin(CellsPage) {
     `;
   }
 
+  // Recuerda añadir siempre atribute name en el formulario
   get _formCreateProduct() {
     return html`
       <h1>${this.t(this._i18nKeys.formHeading)}</h1>
 
       <form id="createProductForm" @submit="${this.handleSubmit}">
-        <bbva-web-form-text id="productNameInput" label="Name Product"></bbva-web-form-text>
-        <bbva-web-form-amount id="productPriceInput" label="Price Product" currency="EUR"></bbva-web-form-amount>
-        <bbva-web-form-textarea id="productDescriptionInput" label="Description Product"></bbva-web-form-textarea>
-        <bbva-web-form-text id="productImageInput" label="URL Image"></bbva-web-form-text>
+        <bbva-web-form-text name="productNameInput" id="productNameInput" label="Name Product"></bbva-web-form-text>
+        <bbva-web-form-amount name="productPriceInput" id="productPriceInput" label="Price Product" currency="EUR"></bbva-web-form-amount>
+        <bbva-web-form-textarea name="productDescriptionInput" id="productDescriptionInput" label="Description Product"></bbva-web-form-textarea>
+        <bbva-web-form-text name="productImageInput" id="productImageInput" label="URL Image"></bbva-web-form-text>
         <bbva-web-button-default type="submit">${this.t(this._i18nKeys.labelButton)}</bbva-web-button-default>
       </form>
     `;
